@@ -16,7 +16,7 @@ const router = useRouter()
     </main>
     <div style="alignment: center">
       <h1 class="font-bold text-5xl text-2xl text-center">
-        Page not found ...
+        Page not found ... deneme
       </h1>
       <div class="col-12 mt-5 text-center">
         <Button icon="pi pi-arrow-left" label="Back to home" @click="router.push('/')" />
