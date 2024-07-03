@@ -1,64 +1,13 @@
 <script setup>
-import { onMounted, ref } from 'vue'
-import axios from 'axios'
+import { onMounted } from 'vue'
+import { usejobList } from '~/stores/jobList'
 import Spinner from '@/components/common/Spinner.vue'
 
-const jobListLoading = ref(false)
-const jobListData = ref([])
-const filteredJobListData = ref([])
-const paginatedJobListData = ref([])
-const currentPage = ref(1)
-const totalItems = ref(0)
-const itemsPerPage = ref(10)
-const searchTerm = ref('')
-const citySearchTerm = ref('')
+const jobList = usejobList()
 
 onMounted(async () => {
-  await getJobList()
+  await jobList.getJobList()
 })
-
-async function getJobList() {
-  jobListLoading.value = true
-  try {
-    const response = await axios.get(
-      'https://667fcc0f56c2c76b495a24ea.mockapi.io/api/kariyertask/job-list'
-    )
-    jobListData.value = response.data
-    filterJobList()
-    jobListLoading.value = false
-  } catch (error) {
-    jobListLoading.value = false
-    console.error('Error fetching job list', error)
-  }
-}
-
-function filterJobList() {
-  filteredJobListData.value = jobListData.value.filter((job) => {
-    return (
-      job.positionName.toLowerCase().includes(searchTerm.value.toLowerCase()) &&
-      job.cityName.toLowerCase().includes(citySearchTerm.value.toLowerCase())
-    )
-  })
-  totalItems.value = filteredJobListData.value.length
-  paginate()
-}
-
-function paginate() {
-  const start = (currentPage.value - 1) * itemsPerPage.value
-  const end = start + itemsPerPage.value
-  paginatedJobListData.value = filteredJobListData.value.slice(start, end)
-}
-
-function onPageChange(event) {
-  currentPage.value = event.page + 1
-  paginate()
-}
-
-function onSearch() {
-  currentPage.value = 1
-  filterJobList()
-  paginate()
-}
 </script>
 
 <template>
@@ -67,21 +16,21 @@ function onSearch() {
       <InputText
         class="search-bar__input"
         placeholder="Pozisyon veya şirket ara"
-        v-model="searchTerm"
-        @keyup.enter="onSearch"
+        v-model="jobList.searchTerm"
+        @keyup.enter="jobList.onSearch"
       />
       <InputText
         class="search-bar__input"
         placeholder="Şehir veya ilçe ara"
-        v-model="citySearchTerm"
-        @keyup.enter="onSearch"
+        v-model="jobList.citySearchTerm"
+        @keyup.enter="jobList.onSearch"
       />
       <Button
         class="search-bar__button"
         severity="danger"
         outlined
         label="İş Ara"
-        @click="onSearch"
+        @click="jobList.onSearch"
       />
     </div>
   </div>
@@ -89,18 +38,20 @@ function onSearch() {
     <div class="breadcrumb container">
       <p class="breadcrumb__item">Ana Sayfa</p>
       <i class="breadcrumb__icon pi pi-arrow-right"></i>
-      <p class="breadcrumb__item breadcrumb__item--active">İş İlanları</p>
+      <p class="breadcrumb__item breadcrumb__item--active font-bold">
+        İş İlanları
+      </p>
     </div>
     <div class="job-listing container">
       <div class="job-listing__box">
-        <p class="job-listing__count">{{ totalItems }}</p>
+        <p class="job-listing__count">{{ jobList.totalItems }}</p>
         <p class="job-listing__text">İş İlanları</p>
       </div>
 
       <div class="job-listing__content">
-        <Spinner v-if="jobListLoading" />
+        <Spinner v-if="jobList.jobListLoading" />
         <a
-          v-for="job in paginatedJobListData"
+          v-for="job in jobList.paginatedJobListData"
           :key="job.id"
           :href="`/jobdetail/${job.id}`"
           target="_blank"
@@ -146,10 +97,10 @@ function onSearch() {
 
         <Paginator
           style="box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1); max-width: 629px"
-          :first="(currentPage - 1) * itemsPerPage"
-          :rows="itemsPerPage"
-          :totalRecords="totalItems"
-          @page="onPageChange"
+          :first="(jobList.currentPage - 1) * jobList.itemsPerPage"
+          :rows="jobList.itemsPerPage"
+          :totalRecords="jobList.totalItems"
+          @page="jobList.onPageChange"
         />
       </div>
     </div>

@@ -1,33 +1,17 @@
 <script setup>
-import { onMounted, ref } from 'vue'
-import axios from 'axios'
+import { onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { useJobDetail } from '@/stores/jobDetail'
 import Spinner from '@/components/common/Spinner.vue'
 
 const route = useRoute()
 const router = useRouter()
-
-const jobDetailLoading = ref(false)
-const jobDetailData = ref(null)
+const jobDetail = useJobDetail()
 
 onMounted(async () => {
-  await getJobDetail()
-})
-
-async function getJobDetail() {
-  jobDetailLoading.value = true
   const jobId = route.params.id
-  try {
-    const response = await axios.get(
-      `https://667fcc0f56c2c76b495a24ea.mockapi.io/api/kariyertask/job-detail/${jobId}`
-    )
-    jobDetailData.value = response.data
-    jobDetailLoading.value = false
-  } catch (error) {
-    jobDetailLoading.value = false
-    console.error('Error fetching job detail', error)
-  }
-}
+  await jobDetail.getJobDetail(jobId)
+})
 
 function goToJobList() {
   router.push('/joblist')
@@ -35,7 +19,7 @@ function goToJobList() {
 </script>
 
 <template>
-  <div v-if="jobDetailData" class="primary-box">
+  <div v-if="jobDetail.jobDetailData" class="primary-box">
     <div class="breadcrumb primary-box">
       <p class="breadcrumb__item">Ana Sayfa</p>
       <i class="breadcrumb__icon pi pi-arrow-right"></i>
@@ -44,27 +28,31 @@ function goToJobList() {
       </p>
       <i class="breadcrumb__icon pi pi-arrow-right"></i>
       <p class="breadcrumb__item breadcrumb__item--active" @click="goToJobList">
-        {{ jobDetailData.companyLocation }} İş İlanları
+        {{ jobDetail.jobDetailData.companyLocation }} İş İlanları
       </p>
       <i class="breadcrumb__icon pi pi-arrow-right"></i>
       <p
         class="breadcrumb__item breadcrumb__item--active font-bold"
         @click="goToJobList"
       >
-        {{ jobDetailData.companyLocation }} {{ jobDetailData.positionName }} İş
-        İlanları
+        {{ jobDetail.jobDetailData.companyLocation }}
+        {{ jobDetail.jobDetailData.positionName }} İş İlanları
       </p>
     </div>
 
-    <Spinner v-if="jobDetailLoading" />
+    <Spinner v-if="jobDetail.jobDetailLoading" />
 
     <div class="col-12 col-sm-7 col-md-7 col-lg-8 p-0 mb-0 col main-box">
       <div class="top-card">
         <div class="headline-top">
           <div class="headline-top-left">
             <div class="title">
-              <p class="position-name">{{ jobDetailData.positionName }}</p>
-              <p class="company-name">{{ jobDetailData.companyName }}</p>
+              <p class="position-name">
+                {{ jobDetail.jobDetailData.positionName }}
+              </p>
+              <p class="company-name">
+                {{ jobDetail.jobDetailData.companyName }}
+              </p>
             </div>
           </div>
           <div class="buttons">
@@ -76,34 +64,38 @@ function goToJobList() {
         <div class="headline-bottom">
           <div class="text-box">
             <div class="company-location">
-              {{ jobDetailData.companyLocation }}
+              {{ jobDetail.jobDetailData.companyLocation }}
             </div>
             <div class="work-model-box">
               <div class="dot-icon"></div>
-              <div>{{ jobDetailData.workModel }}</div>
+              <div>{{ jobDetail.jobDetailData.workModel }}</div>
             </div>
           </div>
           <div class="updated-date">
-            <span>{{ jobDetailData.createdDate }} güncellendi</span>
+            <span>{{ jobDetail.jobDetailData.createdDate }} güncellendi</span>
           </div>
         </div>
         <div class="details-container">
           <div class="details">
             <div class="detail">
               <h3 class="mb-1 text">Çalışma Şekli</h3>
-              <p class="text">{{ jobDetailData.workType }}</p>
+              <p class="text">{{ jobDetail.jobDetailData.workType }}</p>
             </div>
             <div class="detail">
               <h3 class="mb-1 text">Pozisyon Seviyesi</h3>
-              <p class="text">{{ jobDetailData.positionLevel }}</p>
+              <p class="text">
+                {{ jobDetail.jobDetailData.positionLevel }}
+              </p>
             </div>
             <div class="detail">
               <h3 class="mb-1 text">Departman</h3>
-              <p class="text">{{ jobDetailData.department }}</p>
+              <p class="text">{{ jobDetail.jobDetailData.department }}</p>
             </div>
             <div class="detail">
               <h3 class="mb-1 text">Başvuru Sayısı</h3>
-              <p class="text">{{ jobDetailData.applicationNumber }}</p>
+              <p class="text">
+                {{ jobDetail.jobDetailData.applicationNumber }}
+              </p>
             </div>
           </div>
         </div>
@@ -117,20 +109,40 @@ function goToJobList() {
               <div class="job-detail-qualifications">
                 <p style="font-weight: 500">Genel Nitelikler</p>
                 <ul class="list">
-                  <li>{{ jobDetailData.generalQualifications }}</li>
-                  <li>{{ jobDetailData.generalQualifications }}</li>
-                  <li>{{ jobDetailData.generalQualifications }}</li>
-                  <li>{{ jobDetailData.generalQualifications }}</li>
-                  <li>{{ jobDetailData.generalQualifications }}</li>
+                  <li>
+                    {{ jobDetail.jobDetailData.generalQualifications }}
+                  </li>
+                  <li>
+                    {{ jobDetail.jobDetailData.generalQualifications }}
+                  </li>
+                  <li>
+                    {{ jobDetail.jobDetailData.generalQualifications }}
+                  </li>
+                  <li>
+                    {{ jobDetail.jobDetailData.generalQualifications }}
+                  </li>
+                  <li>
+                    {{ jobDetail.jobDetailData.generalQualifications }}
+                  </li>
                 </ul>
                 <br />
                 <p style="font-weight: 500">İş Tanımı</p>
                 <ul class="list">
-                  <li>{{ jobDetailData.positionDescription }}</li>
-                  <li>{{ jobDetailData.positionDescription }}</li>
-                  <li>{{ jobDetailData.positionDescription }}</li>
-                  <li>{{ jobDetailData.positionDescription }}</li>
-                  <li>{{ jobDetailData.positionDescription }}</li>
+                  <li>
+                    {{ jobDetail.jobDetailData.positionDescription }}
+                  </li>
+                  <li>
+                    {{ jobDetail.jobDetailData.positionDescription }}
+                  </li>
+                  <li>
+                    {{ jobDetail.jobDetailData.positionDescription }}
+                  </li>
+                  <li>
+                    {{ jobDetail.jobDetailData.positionDescription }}
+                  </li>
+                  <li>
+                    {{ jobDetail.jobDetailData.positionDescription }}
+                  </li>
                 </ul>
               </div>
             </div>
@@ -149,37 +161,39 @@ function goToJobList() {
         <section>
           <div class="aligment-container-section">
             <h3 class="sub-title">Tecrübe:</h3>
-            <span class="value-contain"> {{ jobDetailData.experience }}</span>
+            <span class="value-contain">
+              {{ jobDetail.jobDetailData.experience }}</span
+            >
           </div>
           <div class="aligment-container-section">
             <h3 class="sub-title">Eğitim Seviyesi:</h3>
             <span class="value-contain">{{
-              jobDetailData.educationLevel
+              jobDetail.jobDetailData.educationLevel
             }}</span>
           </div>
           <div class="aligment-container-section">
             <h3 class="sub-title">Askerlik Durumu:</h3>
             <span class="value-contain">{{
-              jobDetailData.militaryService
+              jobDetail.jobDetailData.militaryService
             }}</span>
           </div>
           <div class="aligment-container-section !mb-0">
             <h3 class="sub-title">Ehliyet:</h3>
-            <span class="value-contain">
-              {{ jobDetailData.driverLicense }}</span
-            >
+            <span class="value-contain">{{
+              jobDetail.jobDetailData.driverLicense
+            }}</span>
           </div>
         </section>
       </div>
 
       <div class="seo-field">
         <p class="seo-header">
-          {{ jobDetailData.positionName }} pozisyonu ile ilgili daha detaylı
-          bilgi almak ya da diğer iş fırsatlarını incelemek için aşağıdaki
-          sayfaları inceleyebilirsiniz.
+          {{ jobDetail.jobDetailData.positionName }} pozisyonu ile ilgili daha
+          detaylı bilgi almak ya da diğer iş fırsatlarını incelemek için
+          aşağıdaki sayfaları inceleyebilirsiniz.
         </p>
         <a class="position-link"
-          >{{ jobDetailData.positionName }} İş İlanları</a
+          >{{ jobDetail.jobDetailData.positionName }} İş İlanları</a
         >
       </div>
     </div>
