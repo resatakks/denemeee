@@ -68,10 +68,6 @@ function redirectToGithub() {
       <span style="color: var(--primary-color)">Nuxt3 PrimeVue Starter</span>
     </NuxtLink>
 
-    <button class="p-link layout-menu-button layout-topbar-button" @click="onMenuToggle()">
-      <i class="pi pi-bars" />
-    </button>
-
     <button class="p-link layout-topbar-menu-button layout-topbar-button" @click="onTopBarMenuButton()">
       <i class="pi pi-ellipsis-v" />
     </button>
@@ -98,73 +94,38 @@ function redirectToGithub() {
       <OverlayPanel id="overlay_panel" ref="op" append-to="body" style="width: 200px">
         <h6>Theme</h6>
         <div class="field-radiobutton">
-          <RadioButton
-            v-model="themeStore.themeName"
-            input-id="aura-dark"
-            name="layoutColorMode"
-            value="aura-dark"
-            @change="themeStore.setTheme('aura-dark')"
-          />
+          <RadioButton v-model="themeStore.themeName" input-id="aura-dark" name="layoutColorMode" value="aura-dark"
+            @change="themeStore.setTheme('aura-dark')" />
           <label for="aura-dark">Aura Dark</label>
         </div>
         <div class="field-radiobutton">
-          <RadioButton
-            v-model="themeStore.themeName"
-            input-id="aura-light"
-            name="layoutColorMode"
-            value="aura-light"
-            @change="themeStore.setTheme('aura-light')"
-          />
+          <RadioButton v-model="themeStore.themeName" input-id="aura-light" name="layoutColorMode" value="aura-light"
+            @change="themeStore.setTheme('aura-light')" />
           <label for="aura-light">Aura Light</label>
         </div>
         <div class="field-radiobutton">
-          <RadioButton
-            v-model="themeStore.themeName"
-            input-id="lara-dark"
-            name="layoutColorMode"
-            value="lara-dark"
-            @change="themeStore.setTheme('lara-dark')"
-          />
+          <RadioButton v-model="themeStore.themeName" input-id="lara-dark" name="layoutColorMode" value="lara-dark"
+            @change="themeStore.setTheme('lara-dark')" />
           <label for="lara-dark">Lara Dark</label>
         </div>
         <div class="field-radiobutton">
-          <RadioButton
-            v-model="themeStore.themeName"
-            input-id="lara-light"
-            name="layoutColorMode"
-            value="lara-light"
-            @change="themeStore.setTheme('lara-light')"
-          />
+          <RadioButton v-model="themeStore.themeName" input-id="lara-light" name="layoutColorMode" value="lara-light"
+            @change="themeStore.setTheme('lara-light')" />
           <label for="lara-light">Lara Light</label>
         </div>
 
         <h6>Primary Color</h6>
         <div class="flex">
-          <div
-            style="width:2rem;height:2rem;border-radius:6px; "
-            class="bg-green-500  mr-3  cursor-pointer"
-            @click="themeStore.setColor('green')"
-          />
-          <div
-            style="width:2rem;height:2rem;border-radius:6px"
-            class="bg-blue-500 mr-3 cursor-pointer"
-            @click="themeStore.setColor('blue')"
-          />
-          <div
-            style="width:2rem;height:2rem;border-radius:6px;"
-            class="bg-teal-500 mr-3 cursor-pointer"
-            @click="themeStore.setColor('teal')"
-          />
-          <div
-            style="width:2rem;height:2rem;border-radius:6px"
-            class="bg-purple-500 mr-3 cursor-pointer"
-            @click="themeStore.setColor('purple')"
-          />
-          <div
-            style="width:2rem;height:2rem;border-radius:6px"
-            class="bg-amber-500 mr-3 cursor-pointer"
-            @click="themeStore.setColor('amber')"
-          />
+          <div style="width:2rem;height:2rem;border-radius:6px; " class="bg-green-500  mr-3  cursor-pointer"
+            @click="themeStore.setColor('green')" />
+          <div style="width:2rem;height:2rem;border-radius:6px" class="bg-blue-500 mr-3 cursor-pointer"
+            @click="themeStore.setColor('blue')" />
+          <div style="width:2rem;height:2rem;border-radius:6px;" class="bg-teal-500 mr-3 cursor-pointer"
+            @click="themeStore.setColor('teal')" />
+          <div style="width:2rem;height:2rem;border-radius:6px" class="bg-purple-500 mr-3 cursor-pointer"
+            @click="themeStore.setColor('purple')" />
+          <div style="width:2rem;height:2rem;border-radius:6px" class="bg-amber-500 mr-3 cursor-pointer"
+            @click="themeStore.setColor('amber')" />
         </div>
       </OverlayPanel>
     </client-only>
@@ -174,7 +135,7 @@ function redirectToGithub() {
 <style lang="scss" scoped>
 .layout-topbar-menu {
   .p-link {
-      color: var(--primary-color);
+    color: var(--primary-color);
   }
 }
 </style>

@@ -23,7 +23,7 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@vueuse/nuxt',
     '@nuxt/test-utils/module',
-    "@nuxt/image"
+    '@nuxt/image',
   ],
   formkit: {
     autoImport: true,
@@ -60,7 +60,14 @@ export default defineNuxtConfig({
     '@sfxcode/formkit-primevue/dist/sass/formkit-primevue.scss',
   ],
   build: {
-    transpile: ['nuxt', 'primevue', 'formkit-primevue'],
+    transpile: [
+      'nuxt',
+      'primevue',
+      'formkit-primevue',
+      'axios',
+      'form-data',
+      'follow-redirects',
+    ],
   },
   sourcemap: {
     client: false,

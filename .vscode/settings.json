@@ -1,3 +1,8 @@
 {
-  "i18n-ally.localesPaths": ["app/locales"]
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "i18n-ally.localesPaths": ["app/locales"],
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

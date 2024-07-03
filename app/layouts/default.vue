@@ -59,9 +59,7 @@ function isOutsideClicked(event) {
     <Link rel="stylesheet" :href="themeStore.link" />
     <div class="layout-wrapper" :class="containerClass">
       <app-topbar />
-      <div class="layout-sidebar">
-        <AppMenu />
-      </div>
+
       <div class="layout-main-container">
         <div class="layout-main">
           <slot />

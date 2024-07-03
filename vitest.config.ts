@@ -1,7 +1,8 @@
 import { defineVitestConfig } from '@nuxt/test-utils/config'
 
 export default defineVitestConfig({
-  test: {
+  test: {},
+  optimizeDeps: {
+    include: ['axios', 'form-data', 'follow-redirects'],
   },
-  // any custom Vitest config you require
 })
