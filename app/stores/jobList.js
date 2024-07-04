@@ -30,11 +30,12 @@ export const usejobList = defineStore('jobList', {
     },
     filterJobList() {
       this.filteredJobListData = this.jobListData.filter((job) => {
+        const searchTermLower = this.searchTerm.toLowerCase()
+        const citySearchTermLower = this.citySearchTerm.toLowerCase()
         return (
-          job.positionName
-            .toLowerCase()
-            .includes(this.searchTerm.toLowerCase()) &&
-          job.cityName.toLowerCase().includes(this.citySearchTerm.toLowerCase())
+          (job.positionName.toLowerCase().includes(searchTermLower) ||
+            job.companyName.toLowerCase().includes(searchTermLower)) &&
+          job.cityName.toLowerCase().includes(citySearchTermLower)
         )
       })
       this.totalItems = this.filteredJobListData.length
