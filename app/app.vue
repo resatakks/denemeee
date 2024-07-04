@@ -1,6 +1,6 @@
 <script setup>
 useHead({
-  title: 'Nuxt 3 PrimeVue Starter',
+  title: 'Kariyer.net Task',
 })
 </script>
 
@@ -10,6 +10,6 @@ useHead({
   </NuxtLayout>
 </template>
 
-<style lang='scss'>
+<style lang="scss">
 @import 'App.scss';
 </style>

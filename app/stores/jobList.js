@@ -12,20 +12,23 @@ export const usejobList = defineStore('jobList', {
     itemsPerPage: 10,
     searchTerm: '',
     citySearchTerm: '',
+    errorMessage: '',
   }),
   actions: {
     async getJobList() {
       this.jobListLoading = true
+      this.errorMessage = ''
       try {
         const response = await axios.get(
-          'https://667fcc0f56c2c76b495a24ea.mockapi.io/api/kariyertask/job-list'
+          `${import.meta.env.VITE_API_URL}/job-list`
         )
         this.jobListData = response.data
         this.filterJobList()
-        this.jobListLoading = false
       } catch (error) {
-        this.jobListLoading = false
+        this.errorMessage = 'Error fetching job list'
         console.error('Error fetching job list', error)
+      } finally {
+        this.jobListLoading = false
       }
     },
     filterJobList() {
