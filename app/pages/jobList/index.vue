@@ -2,7 +2,7 @@
 import { onMounted } from 'vue'
 import { usejobList } from '~/stores/jobList'
 import searchBar from './searchBar.vue'
-import Breadcrumb from './breadcrumb.vue'
+import Breadcrumb from './breadCrumb.vue'
 import JobListing from './jobListing.vue'
 
 const jobList = usejobList()
