@@ -1,52 +1,29 @@
-# Nuxt 3 + PrimeVue Starter
+Reşat Akkuş Kariyer Net Case Değerlendirmesi Üzerine
 
-Build your VUE.js App with Nuxt3. First Class PrimeVUE support. Validation by Formkit.
-Based on [Nuxt-Sakai](https://github.com/primefaces/sakai-nuxt) Theme.
+Öncelikle bu case'i gerçekten kısıtlı zamanda yaptığımı belirtmek isterim. Tüm maddelerin üstünden geçmeye çalıştım, zamanın yeteceği kadar component yapabilmeye çalıştım.
+Case içinde verilen her şeyi ya da farklı araçlar ile de olsa defalarca yaptım.Fakat aynı zamanda mesaili bir işim var ve bazı talihsiz olaylar yaşadım.
+Tabiki de daha fazla zaman olsaydı sitede gördüğüm her componenti ya da tasarımı birebir eklemek isterdim fakat case'in amacına uygun sekilde her seyi yapmaya calıstım.
 
-[![CI](https://github.com/sfxcode/nuxt3-primevue-starter/actions/workflows/main.yml/badge.svg)](https://github.com/sfxcode/nuxt3-primevue-starter/actions/workflows/main.yml)
+Bir template-starter kullandım ve bunu olabildiğince sadelestirmeye çalıştım.Ufak birkaç sorun yaşadım, configlerle alakalı fakat hallettim.
+Nuxt 3, Composition API, Pinia ve PrimeVue kullandım.
+PrimeVue yerine Navie UI kullanacaktım fakat ufak sorunlar yaşadım, bunları çözmekle zaman kaybetmek yerine PrimeVue kullanmayı tercih ettim.
 
-THX to [antfu / Vitesse Nuxt3](https://github.com/antfu/vitesse-nuxt3) for starter code
+Component Base bir yapı kullanmaya çalıştım, componentleri uzun tutmadım. Akabinde çok fazla componente de ihtiyacım olmadı.
+Kariyer.net is-ilanları ve is ilanı sayfasında gerekli componentleri ve aksiyonları yapmaya çalıştım. Header ve Footer bile yapamadım çünkü gerçekten kısıtlı bir vaktim vardı.
 
-## Features
+Routing yapısını istenildiği şekilde Nuxt/Pages ile sağladım.
 
-- [Nuxt 3](https://v3.nuxtjs.org) - SSR, ESR, File-based routing, components auto importing, modules, etc.
-- [PrimeVue](https://primevue.org/) 3.50.x with free Sakai Layout and Aura Theme
-- [Formkit-PrimeVue](https://formkit-primevue.netlify.app/) PrimeVue Formkit Integration
-- [Vite](https://vitejs.dev/) - Instant HMR
-- [UnoCSS](https://github.com/antfu/unocss) - The instant on-demand atomic CSS engine.
-- Use icons from any icon sets in Pure CSS, powered by [UnoCSS](https://github.com/antfu/unocss)
-- [State Management via Pinia](https://pinia.esm.dev)
-- [TipTap](https://tiptap.dev) - Headless Editor
-- [Vitest](https://vitest.dev/) - Blazing Fast Unit Test Framework ([Getting started](https://vitest.dev/guide))
-- [nuxt-test-utils](https://github.com/nuxt/test-utils) - Support for e2e and unit testing ([Getting started](https://nuxt.com/docs/getting-started/testing))
+Projeyi Github'a aktardım.
+İlanlar içinde istenildiği üzere bazı anahtar kelimeler ve lokasyona göre iş ilanı listelenip card'a tıklandığında detayına gidilmektedir.
+İlan listeleme de sayfalama yaptım fakat paginatorun tasarımı üzerinde çok durmadım.
+Endpointler için mockapi.io servisini kullandım fakat free sürümde istenildiği gibi bir response yazamadım ve mock datalarla düzgünce oynayamadım fakat elimde sadece bu olduğu için bunu kullandım.
+Api istekleri ve state management için Pinia kullandım.
+Api istekleri için Environment variable kullanmış oldum.
+Servisten cevap alınamadığı durumlarda bir Error Handling mekanizması kurdum.
+Oluşturan her component için test yazamadım fakat 2 büyük component için Vitest kullanarak test yazdım.
+Proje sayfalarını tasarlarken Kariyer.net'i kopyalamaya çalıştım.Mobil görünümün üstüne çok düşemedim, dediğim gibi zaman sorunu mevcuttu fakat düzgün görünmesini sağladım.
 
-## Nuxt Modules
 
-- [PrimeVue-Nuxt](https://primevue.org/nuxt/) PrimeVue Nuxt Module
-- [Pinia](https://pinia.esm.dev/) - intuitive, type safe, light and flexible Store for Vue.
-- [VueUse](https://github.com/vueuse/vueuse) - collection of useful composition APIs.
-- [FormKit](https://formkit.com/) - Validation
-- [UnoCSS](https://github.com/antfu/unocss) - the instant on-demand atomic CSS engine.
-- [Content](https://content.nuxtjs.org) - parses .md, .yml, .csv and .json files
-- [I18n](https://v8.i18n.nuxtjs.org) - Integration with [Vue I18n](https://vue-i18n.intlify.dev/)
-
-## Variations
-
-### vite-primevue-starter
-
-Vite Primevue Starter Template
-
-[Github Repository](https://github.com/sfxcode/vite-primevue-starter)
-
-[App on Netlify](https://vite-primevue-starter.netlify.app/)
-
-* Pages, Layouts, and other NUXT like features by VITE Plugins
-* UnoCSS
-* Markdown
-* CachedPiniaStore
-* i18n
-* Validation
-* ...
 
 ## Project setup and usage
 
@@ -73,7 +50,7 @@ pnpm dev
 Vitest test runner:
 
 ```
-pnpm test:unit
+npx vitest dev
 ```
 
 Build:
@@ -87,15 +64,3 @@ Start Production build:
 ```
 pnpm start
 ```
-
-## Tools
-
-I use IntelliJ with VUE.js plugin.
-
-## Supporters
-
-JetBrains is supporting this open source project with:
-
-[![Intellij IDEA](http://www.jetbrains.com/img/logos/logo_intellij_idea.png)](http://www.jetbrains.com/idea/)
-
-![](public/starter.png)
