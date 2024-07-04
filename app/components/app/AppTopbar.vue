@@ -67,35 +67,17 @@ function redirectToGithub() {
 
 <template>
   <div class="layout-topbar">
-    <NuxtLink to="/" class="layout-topbar-logo">
-      <span style="color: var(--primary-color)">Kariyer Net</span>
+    <NuxtLink
+      style="margin-left: auto; margin-right: auto; max-width: 1200px"
+      to="/"
+      class="layout-topbar-logo"
+    >
+      <img
+        src="https://aday-spage.mncdn.com/Knet_img_KnetLogoHeader.76801b2.svg?v=82301"
+        alt="Kariyer Net Logo"
+      />
     </NuxtLink>
 
-    <button
-      class="p-link layout-topbar-menu-button layout-topbar-button"
-      @click="onTopBarMenuButton()"
-    >
-      <i class="pi pi-ellipsis-v" />
-    </button>
-
-    <div class="layout-topbar-menu" :class="topbarMenuClasses">
-      <button class="p-link layout-topbar-button" @click="onTopBarMenuButton()">
-        <i class="pi pi-calendar" />
-        <span>Calendar</span>
-      </button>
-      <button class="p-link layout-topbar-button" @click="onTopBarMenuButton()">
-        <i class="pi pi-user" />
-        <span>Profile</span>
-      </button>
-      <button class="p-link layout-topbar-button" @click="toggle">
-        <i class="pi pi-cog" />
-        <span>Settings</span>
-      </button>
-      <button class="p-link layout-topbar-button" @click="redirectToGithub">
-        <i class="pi pi-github" />
-        <span>Github</span>
-      </button>
-    </div>
     <client-only>
       <OverlayPanel
         id="overlay_panel"

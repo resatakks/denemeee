@@ -41,12 +41,14 @@ function goToJobList() {
   gap: 10px;
   margin: 0 auto;
   padding: 12px 16px 12px 0;
+  overflow-x: auto;
 }
 
 .breadcrumb__item {
   margin-bottom: 0;
   color: #878787;
   font-size: 12px;
+  white-space: nowrap;
 }
 
 .breadcrumb__item--active {
@@ -56,5 +58,12 @@ function goToJobList() {
 
 .breadcrumb__icon {
   color: #a9a9a9 !important;
+}
+
+@media (max-width: 768px) {
+  .breadcrumb {
+    padding: 12px 10px;
+    -webkit-overflow-scrolling: touch;
+  }
 }
 </style>

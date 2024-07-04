@@ -71,6 +71,18 @@ const jobList = usejobList()
 </template>
 
 <style scoped>
+::v-deep .p-paginator.p-component {
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+  border-radius: 0.25rem;
+  padding: 16px 0;
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1);
+  background: #fff;
+  @media (max-width: 768px) {
+    max-width: 370px;
+  }
+}
 .job-listing {
   text-align: center;
   margin: 0 auto 16px;
@@ -80,6 +92,9 @@ const jobList = usejobList()
   justify-content: flex-start;
   gap: 5px;
   margin-bottom: 16px;
+  @media (max-width: 768px) {
+    padding-left: 10px;
+  }
 }
 .job-listing__count,
 .job-listing__text {
@@ -97,9 +112,20 @@ const jobList = usejobList()
   color: #333;
   padding: 15px;
   cursor: pointer;
+  @media (max-width: 768px) {
+    padding: 8px;
+    max-width: 370px;
+  }
+  @media (max-width: 376px) {
+    padding: 8px;
+    max-width: 350px;
+  }
 }
 .job-listing__content {
   max-width: 629px !important;
+  @media (max-width: 768px) {
+    padding-left: 10px;
+  }
 }
 
 .job-card__top {

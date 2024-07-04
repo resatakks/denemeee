@@ -15,6 +15,9 @@
   gap: 10px;
   margin: 0 auto;
   padding: 12px 16px 12px 0;
+  @media (max-width: 768px) {
+    padding-left: 10px;
+  }
 }
 
 .breadcrumb__item {

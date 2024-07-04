@@ -5,6 +5,11 @@
     justify-content: space-between;
     padding: 5rem 0 2rem 0;
     transition: margin-left $transitionDuration;
+    background: #F9F9F9;
+
+    @media (max-width: 768px) {
+        padding-left: 0 !important;
+    }
 }
 
 .layout-main {

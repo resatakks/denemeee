@@ -25,5 +25,14 @@ onMounted(async () => {
   margin-left: auto;
   margin-right: auto;
   max-width: 1200px;
+  @media (max-width: 1400px) {
+    max-width: 1000px;
+  }
+  @media (max-width: 1200px) {
+    max-width: 800px;
+  }
+  @media (max-width: 768px) {
+    padding: 0 10px;
+  }
 }
 </style>

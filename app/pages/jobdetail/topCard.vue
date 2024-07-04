@@ -30,7 +30,9 @@ const props = defineProps({
         </div>
       </div>
       <div class="updated-date">
-        <span>{{ jobDetailData.createdDate }} güncellendi</span>
+        <span class="updated-date-span"
+          >{{ jobDetailData.createdDate }} güncellendi</span
+        >
       </div>
     </div>
     <div class="details-container">
@@ -87,6 +89,10 @@ const props = defineProps({
   margin-bottom: 8px;
   letter-spacing: normal;
   box-shadow: transparent 0px 0px;
+  @media (max-width: 768px) {
+    font-size: 14px;
+    margin-bottom: 0;
+  }
 }
 .company-name {
   color: inherit;
@@ -106,6 +112,11 @@ const props = defineProps({
   font-weight: 500;
   min-width: 110px;
   max-width: 160px;
+  @media (max-width: 768px) {
+    max-width: 70px !important;
+    min-width: 70px !important;
+    font-size: 12px;
+  }
 }
 .btn-secondary {
   color: #8316b5;
@@ -115,6 +126,11 @@ const props = defineProps({
   font-weight: 500;
   min-width: 110px;
   max-width: 160px;
+  @media (max-width: 768px) {
+    max-width: 70px !important;
+    min-width: 70px !important;
+    font-size: 12px;
+  }
 }
 .share-button {
   width: 36px !important;
@@ -132,6 +148,9 @@ const props = defineProps({
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   color: #8316b5;
   text-align: center;
+  @media (max-width: 768px) {
+    max-width: 60px;
+  }
 }
 .headline-bottom {
   display: flex;
@@ -142,6 +161,11 @@ const props = defineProps({
 .text-box {
   display: flex;
   color: #878787;
+  @media (max-width: 768px) {
+    width: 250px !important;
+    justify-content: center;
+    align-items: center;
+  }
 }
 .company-location {
   display: flex;
@@ -168,6 +192,13 @@ const props = defineProps({
 .updated-date {
   color: #878787;
 }
+
+@media (max-width: 768px) {
+  .updated-date {
+    text-align: center;
+  }
+}
+
 .details-container {
   padding: 16px;
   color: #333;
@@ -182,6 +213,14 @@ const props = defineProps({
   background-color: #f8f9fa;
   border-radius: 4px;
 }
+
+@media (max-width: 768px) {
+  .details {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
 .detail {
   display: flex;
   flex-direction: column;
@@ -189,6 +228,10 @@ const props = defineProps({
   color: #333;
   font-weight: 500;
   min-width: 91px;
+  @media (max-width: 768px) {
+    min-width: 128px;
+    -webkit-overflow-scrolling: touch;
+  }
 }
 .text {
   font-size: 14px;
