@@ -1,9 +1,9 @@
 <script setup>
 import { onMounted } from 'vue'
 import { usejobList } from '~/stores/jobList'
-import SearchBar from './SearchBar.vue'
-import Breadcrumb from './Breadcrumb.vue'
-import JobListing from './JobListing.vue'
+import searchBar from './searchBar.vue'
+import Breadcrumb from './breadcrumb.vue'
+import JobListing from './jobListing.vue'
 
 const jobList = usejobList()
 
@@ -13,7 +13,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <SearchBar />
+  <searchBar />
   <div class="primary-box">
     <Breadcrumb />
     <JobListing />
